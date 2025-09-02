@@ -13,7 +13,6 @@ public class ScoreManager : MonoBehaviour
     public int maxScore;
     public TextMeshProUGUI p1ScoreText;
     public TextMeshProUGUI p2ScoreText;
-    public TextMeshProUGUI endGameText;
 
     private void Awake()
     {
@@ -22,10 +21,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey && (p1Score >= maxScore || p2Score >= maxScore))
-        { 
-            ResetGame();
-        }
+
     }
 
     public void GivePoint(bool isP1)
@@ -39,15 +35,6 @@ public class ScoreManager : MonoBehaviour
             p2Score += 1;
         }
 
-        if (p1Score >= maxScore || p2Score >= maxScore)
-        {
-            HandleWin(isP1);
-        }
-        else
-        {
-            BallSpawner.Instance.SpawnBall();
-        }
-
         UpdateScoreboard();
     }
 
@@ -59,14 +46,7 @@ public class ScoreManager : MonoBehaviour
 
     void HandleWin(bool isP1)
     {
-        if (isP1)
-        {
-            endGameText.SetText("Player 2 Loses \nPress any key to restart");
-        }
-        else
-        { 
-            endGameText.SetText("Player 1 Loses \nPress any key to restart");
-        }
+
     }
 
     void ResetGame()

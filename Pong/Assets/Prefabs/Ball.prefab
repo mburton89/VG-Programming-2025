@@ -102,6 +102,7 @@ MonoBehaviour:
   movementSpeed: 0.01
   direction: {x: 1, y: 0, z: 0}
   maxYPosition: 4.8
+  maxXPosition: 10
 --- !u!61 &1561998344355285723
 BoxCollider2D:
   m_ObjectHideFlags: 0

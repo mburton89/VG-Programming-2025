@@ -33,6 +33,11 @@ public class BallSpawner : MonoBehaviour
     {
         Debug.Log("Spawn Ball");
         GameObject newBall = Instantiate(ballPrefab);
-        newBall.GetComponent<Ball>().direction = spawnDirection;
+
+        float randX = Random.Range(-1.0f, 1.0f);
+        float randY = Random.Range(-1.0f, 1.0f);
+        spawnDirection = new Vector3(randX, randY, 0);
+
+        newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
     }
 }

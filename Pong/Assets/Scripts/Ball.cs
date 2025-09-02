@@ -7,7 +7,8 @@ public class Ball : MonoBehaviour
     public float movementSpeed;
     public Vector3 direction;
 
-    public float maxYPosition; //WALLS
+    public float maxYPosition;
+    public float maxXPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,17 @@ public class Ball : MonoBehaviour
         else if (transform.position.y < -maxYPosition && direction.y < 0)
         {
             direction = new Vector3(direction.x, -direction.y, 0);
+        }
+
+        if (transform.position.x > maxXPosition)
+        {
+            ScoreManager.Instance.GivePoint(true);
+            Destroy(gameObject);
+        }
+        else if (transform.position.x < -maxXPosition)
+        {
+            ScoreManager.Instance.GivePoint(false);
+            Destroy(gameObject);
         }
     }
 }
