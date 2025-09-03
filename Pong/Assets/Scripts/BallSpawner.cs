@@ -9,6 +9,8 @@ public class BallSpawner : MonoBehaviour
     public Vector3 spawnDirection;
     public GameObject ballPrefab;
 
+    public bool canSpawnBall = false;
+
     private void Awake()
     {
         Instance = this;
@@ -17,27 +19,38 @@ public class BallSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnBall();
+        SpawnBall(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canSpawnBall)
         { 
-            SpawnBall();
+            SpawnBall(ScoreManager.Instance.player1Scored);
         }
     }
 
-    public void SpawnBall()
+    public void SpawnBall(bool isP1)
     {
         Debug.Log("Spawn Ball");
         GameObject newBall = Instantiate(ballPrefab);
 
-        float randX = Random.Range(-1.0f, 1.0f);
-        float randY = Random.Range(-1.0f, 1.0f);
-        spawnDirection = new Vector3(randX, randY, 0);
+        float xDirection;
+
+        if (isP1)
+        {
+            xDirection = -1;
+        }
+        else
+        {
+            xDirection = 1;
+        }
+
+        spawnDirection = new Vector3(xDirection, 0, 0);
 
         newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
+
+        canSpawnBall = false;
     }
 }

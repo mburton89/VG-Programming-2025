@@ -318,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDirection: {x: 1, y: 0, z: 0}
   ballPrefab: {fileID: 3485759674002586820, guid: ea7e02e333c02ca4a8fda030fab62681, type: 3}
+  canSpawnBall: 0
 --- !u!212 &312629236
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1070,7 +1071,15 @@ MonoBehaviour:
   maxScore: 5
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
-  endGameText: {fileID: 595364195}
+  winText: {fileID: 595364195}
+  p1WinMessages:
+  - Player 1 Wins
+  - P1 Wins
+  - Good Job P1
+  p2WinMessages:
+  - Player 2 Wins
+  - P2 Wins
+  - Good Job P2
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
