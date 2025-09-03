@@ -13,6 +13,12 @@ public class ScoreManager : MonoBehaviour
     public int maxScore;
     public TextMeshProUGUI p1ScoreText;
     public TextMeshProUGUI p2ScoreText;
+    public TextMeshProUGUI winText;
+
+
+    
+    public List<string> P1WinMessages;
+    public List<string> P2WinMessages;
 
     private void Awake()
     {
@@ -35,6 +41,23 @@ public class ScoreManager : MonoBehaviour
             p2Score += 1;
         }
 
+        if(p1Score >= maxScore || p2Score >= maxScore)
+        {
+
+            HandleWin(isP1);
+        }
+        else
+        {
+
+          BallSpawner.Instance.SpawnBall(isP1);
+        
+        
+        }
+
+         
+
+
+
         UpdateScoreboard();
     }
 
@@ -46,6 +69,31 @@ public class ScoreManager : MonoBehaviour
 
     void HandleWin(bool isP1)
     {
+        string messageToDisplay;
+
+        if (isP1)
+
+        {
+
+            int rand = Random.Range(0, P1WinMessages.Count);
+            messageToDisplay = P1WinMessages[rand];
+
+        }
+        else
+        {
+
+            int rand = Random.Range(0, P2WinMessages.Count);
+            messageToDisplay = P2WinMessages[rand];
+
+       
+        
+        
+        }
+
+        winText.SetText(messageToDisplay);
+
+
+
 
     }
 

@@ -1070,7 +1070,15 @@ MonoBehaviour:
   maxScore: 5
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
-  endGameText: {fileID: 595364195}
+  winText: {fileID: 595364195}
+  P1WinMessages:
+  - Player 1 wins
+  - Player 2 sucks, P1  wins
+  - Holy crap You wan P1
+  P2WinMessages:
+  - Player 2 wins
+  - Get good P1 Player, P2 wins
+  - OMG P2 wins
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
