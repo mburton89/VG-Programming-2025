@@ -11,9 +11,13 @@ public class ScoreManager : MonoBehaviour
 
     public int p1Score;
     public int p2Score;
+    public int p3Score;
+    public int p4Score;
     public int maxScore;
     public TextMeshProUGUI p1ScoreText;
     public TextMeshProUGUI p2ScoreText;
+    public TextMeshProUGUI p3ScoreText;
+    public TextMeshProUGUI p4ScoreText;
     public TextMeshProUGUI winText;
 
     public List<string> p1WinMessages;
@@ -58,6 +62,8 @@ public class ScoreManager : MonoBehaviour
     {
         p1ScoreText.SetText(p1Score.ToString());
         p2ScoreText.SetText(p2Score.ToString());
+        p3ScoreText.SetText(p3Score.ToString());
+        p4ScoreText.SetText(p4Score.ToString());
     }
 
     void HandleWin(bool isP1)

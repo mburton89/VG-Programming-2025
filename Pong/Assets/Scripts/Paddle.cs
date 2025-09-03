@@ -21,13 +21,14 @@ public class Paddle : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(upKey) && transform.position.y < maxYPosition)
-        { 
+        {
             MoveUp();
         }
         else if (Input.GetKey(downKey) && transform.position.y > -maxYPosition)
         {
             MoveDown();
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
