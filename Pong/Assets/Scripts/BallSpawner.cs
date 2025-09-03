@@ -40,11 +40,11 @@ public class BallSpawner : MonoBehaviour
 
         if (isP1)
         {
-            xDirection = -1;
+            xDirection = 1;
         }
         else
         {
-            xDirection = 1;
+            xDirection = -1;
         }
 
         spawnDirection = new Vector3(xDirection, 0, 0);
