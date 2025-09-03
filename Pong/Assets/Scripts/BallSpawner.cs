@@ -17,27 +17,55 @@ public class BallSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnBall();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        { 
-            SpawnBall();
+        float randStart = Random.Range(-1.0f, 1.0f);
+        if (randStart < 1)
+        {
+            SpawnBall(true);
+        }
+        else
+        {
+            SpawnBall(false);
         }
     }
 
-    public void SpawnBall()
+    // Update is called once per frame
+    // Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    { 
+    //        SpawnBall();
+    //    }
+    //
+    //}
+
+    public void SpawnBall(bool isP1)
     {
+        StartCoroutine(DelaySpawnBall(isP1));
+    }
+
+    private IEnumerator DelaySpawnBall(bool isP1) 
+    {
+
+        yield return new WaitForSeconds(1.5f);
+
         Debug.Log("Spawn Ball");
         GameObject newBall = Instantiate(ballPrefab);
 
-        float randX = Random.Range(-1.0f, 1.0f);
-        float randY = Random.Range(-1.0f, 1.0f);
-        spawnDirection = new Vector3(randX, randY, 0);
+        float xDirection;
+        if (isP1)
+        {
+            xDirection = -1;
+        }
+        else 
+        {
+            xDirection = 1;
+        }
+        float randY = Random.Range(-0.5f, 0.5f);
+        spawnDirection = new Vector3(xDirection, randY, 0);
 
         newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
+
     }
+
+
 }
