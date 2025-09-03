@@ -1070,7 +1070,17 @@ MonoBehaviour:
   maxScore: 5
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
-  endGameText: {fileID: 595364195}
+  winText: {fileID: 595364195}
+  p1WinMessages:
+  - win
+  - woo
+  - good
+  - well
+  p2WinMessages:
+  - win 2
+  - woo 2
+  - good 2
+  - well 2
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
