@@ -1067,10 +1067,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Score: 0
   p2Score: 0
-  maxScore: 5
+  maxScore: 1
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
-  endGameText: {fileID: 595364195}
+  winText: {fileID: 595364195}
+  p1WinMessages:
+  - The winner is Player 1
+  - Player 1 wins
+  - Sorry, Player 2
+  - Way to go, Player 1
+  - Well done, Player 1
+  - Better luck next time, Player 2
+  - Congratulations, Player 1
+  - Pack your bags, Player 2
+  - Congrats, Player 1
+  - Tough luck, Player 2
+  p2WinMessages:
+  - Player 2 wins
+  - Way to go, Player 2
+  - Sorry, Player 1
+  - Well Done, Player 2
+  - The winner is Player 2
+  - Better luck next time, Player 1
+  - Congratulations, Player 2
+  - Pack your bags, Player 1
+  - Congrats, Player 2
+  - Tough luck, Player 1
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
