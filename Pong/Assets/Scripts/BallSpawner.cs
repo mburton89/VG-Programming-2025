@@ -4,40 +4,43 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-    public static BallSpawner Instance;
+  // Start is called before the first frame update
 
-    public Vector3 spawnDirection;
-    public GameObject ballPrefab;
+  public static BallSpawner Instance;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+  public GameObject ballPrefab;
+  public KeyCode spawnKey;
+  public Vector3 spawnDirection;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SpawnBall();
-    }
+  private void Awake()
+  {
+    Instance = this;
+  }
+  void Start()
+  {
+    SpawnBall();
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        { 
-            SpawnBall();
-        }
-    }
+  // Update is called once per frame
+  void Update()
+  {
 
-    public void SpawnBall()
-    {
-        Debug.Log("Spawn Ball");
-        GameObject newBall = Instantiate(ballPrefab);
+  }
 
-        float randX = Random.Range(-1.0f, 1.0f);
-        float randY = Random.Range(-1.0f, 1.0f);
-        spawnDirection = new Vector3(randX, randY, 0);
+  public void SpawnBall()
+  {
+    StartCoroutine(DelaySpawnBall());
+  }
 
-        newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
-    }
+  private IEnumerator DelaySpawnBall()
+  {
+    yield return new WaitForSeconds(0.5f);
+
+    GameObject newBall = Instantiate(ballPrefab);
+
+
+    spawnDirection.x = ScoreManager.Instance.whoScored;
+
+    newBall.GetComponent<Ball>().direction = spawnDirection;
+  }
 }

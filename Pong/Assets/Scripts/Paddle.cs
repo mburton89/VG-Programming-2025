@@ -4,54 +4,66 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-    public float maxYPosition;
-    public float verticalMovementSpeed;
-    public int xHitDirection;
 
-    public KeyCode upKey;
-    public KeyCode downKey;
+  public float maxYPos;
+  public float verticalMoveSpeed;
+  public int xHitDirection;
+  public int movingDirection;
 
-    // Start is called before the first frame update
-    void Start()
+  public KeyCode upKey;
+  public KeyCode downKey;
+
+  // Start is called before the first frame update
+  void Start()
+  {
+
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    if (Input.GetKey(upKey) && transform.position.y < maxYPos)
     {
-        
+      movingDirection = 1;
+      MoveUp();
     }
 
-    // Update is called once per frame
-    void Update()
+    else if (Input.GetKey(downKey) && transform.position.y > -maxYPos)
     {
-        if (Input.GetKey(upKey) && transform.position.y < maxYPosition)
-        { 
-            MoveUp();
-        }
-        else if (Input.GetKey(downKey) && transform.position.y > -maxYPosition)
-        {
-            MoveDown();
-        }
+      movingDirection = -1;
+      MoveDown();
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    else
     {
-        if (collision.gameObject.GetComponent<Ball>())
-        {
-            float yHitDirection = collision.transform.position.y - transform.position.y;
-            Vector3 newHitDirection = new Vector3(xHitDirection, yHitDirection, 0);
-            collision.gameObject.GetComponent<Ball>().GetHit(newHitDirection);
-        }
+      movingDirection = 0;
     }
+  }
 
-    void MoveUp()
+  void OnCollisionEnter2D(Collision2D collision)
+  {
+    if (collision.gameObject.GetComponent<Ball>())
     {
-        transform.position += Vector3.up * verticalMovementSpeed;
+      float yHitDirection = movingDirection;
+      float ballY = collision.gameObject.GetComponent<Ball>().direction.y;
+
+      Vector3 newHitDirection = new Vector3(xHitDirection, (ballY + yHitDirection) / 2, 0);
+      collision.gameObject.GetComponent<Ball>().GetHit(newHitDirection);
     }
 
-    void MoveDown()
-    {
-        transform.position += Vector3.down * verticalMovementSpeed;
-    }
+  }
 
-    void HitBall()
-    { 
-    
-    }
+  void MoveUp()
+  {
+    transform.position += Vector3.up * verticalMoveSpeed * Time.deltaTime;
+  }
+  void MoveDown()
+  {
+    transform.position += Vector3.down * verticalMoveSpeed * Time.deltaTime;
+  }
+
+  void HitBall()
+  {
+
+  }
+
 }

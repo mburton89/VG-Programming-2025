@@ -4,55 +4,75 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public float movementSpeed;
-    public Vector3 direction;
+  public float moveSpeed;
+  public Vector3 direction;
+  public float maxXPos;
+  public float maxYPos;
 
-    public float maxYPosition;
-    public float maxXPosition;
+  // Start is called before the first frame update
+  void Start()
+  {
 
-    // Start is called before the first frame update
-    void Start()
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    Move();
+    CheckBoundaries();
+
+
+  }
+
+  void Move()
+  {
+    transform.position += direction * moveSpeed * Time.deltaTime;
+  }
+
+  public void GetHit(Vector3 hitDirection)
+  {
+    direction = hitDirection;
+    if (hitDirection.x > 0)
     {
-        
+      MainCamera.Instance.position.z = -10.5f;
+      MainCamera.Instance.rotation.y = 2f;
+    }
+    else
+    {
+      MainCamera.Instance.position.z = -10.5f;
+      MainCamera.Instance.rotation.y = -2f;
+    }
+  }
+
+
+
+  void CheckBoundaries()
+  {
+    // BOUNCE OFF WALLS!!
+    if (transform.position.y > maxYPos && direction.y > 0)
+    {
+      direction.y = -direction.y;
+      moveSpeed = moveSpeed + 0.5f;
+    }
+    else if (transform.position.y < -maxYPos && direction.y < 0)
+    {
+      direction.y = -direction.y;
+      moveSpeed = moveSpeed + 0.5f;
     }
 
-    // Update is called once per frame
-    void Update()
+    // SCORE A POINT!!
+    if (transform.position.x > maxXPos)
     {
-        Move();
-        CheckBoundaries();
+      ScoreManager.Instance.GivePoint(true);
+      print("P1 score: " + ScoreManager.Instance.p1Score);
+      Destroy(gameObject);
     }
-
-    public void GetHit(Vector3 hitDirection)
+    else if (transform.position.x < -maxXPos)
     {
-        direction = hitDirection;
+      ScoreManager.Instance.GivePoint(false);
+      print("P2 score: " + ScoreManager.Instance.p2Score);
+      Destroy(gameObject);
     }
+  }
 
-    void Move()
-    {
-        transform.position += direction * movementSpeed;
-    }
-
-    void CheckBoundaries()
-    {
-        if (transform.position.y > maxYPosition && direction.y > 0)
-        { 
-            direction = new Vector3(direction.x, -direction.y, 0);
-        }
-        else if (transform.position.y < -maxYPosition && direction.y < 0)
-        {
-            direction = new Vector3(direction.x, -direction.y, 0);
-        }
-
-        if (transform.position.x > maxXPosition)
-        {
-            ScoreManager.Instance.GivePoint(true);
-            Destroy(gameObject);
-        }
-        else if (transform.position.x < -maxXPosition)
-        {
-            ScoreManager.Instance.GivePoint(false);
-            Destroy(gameObject);
-        }
-    }
 }
