@@ -1070,7 +1070,8 @@ MonoBehaviour:
   maxScore: 5
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
-  endGameText: {fileID: 595364195}
+  winText: {fileID: 595364195}
+  winMessage: Congrats, you knocked some balls around
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
