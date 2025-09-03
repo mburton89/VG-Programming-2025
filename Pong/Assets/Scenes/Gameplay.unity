@@ -1070,7 +1070,18 @@ MonoBehaviour:
   maxScore: 5
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
-  endGameText: {fileID: 595364195}
+  winText: {fileID: 595364195}
+  winMessage: go outside.
+  p1WinMessages:
+  - Player 1 Wins
+  - Good job player 1
+  - 'PLAYER 1: WINNER!'
+  - please go outside player 1
+  p2WinMessages:
+  - Player 2 Wins
+  - Good job player 2
+  - 'PLAYER 2: WINNER!'
+  - please go take a shower player 2
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
