@@ -58,7 +58,7 @@ public class BallSpawner : MonoBehaviour
 
 
         float randY = Random.Range(-0.0f, .1f);
-        spawnDirection = new Vector3(xDirection, randY, 0);
+        spawnDirection = new Vector3(xDirection, randY, -1);
 
         newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
 

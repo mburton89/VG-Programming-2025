@@ -50,6 +50,7 @@ public class ScoreManager : MonoBehaviour
         {
 
           BallSpawner.Instance.SpawnBall(isP1);
+          BallSpawner.Instance.SpawnBall(isP1);
         
         
         }
