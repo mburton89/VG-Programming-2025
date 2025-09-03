@@ -5,11 +5,16 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
     public float maxYPosition;
+    public float maxXPosition;
     public float verticalMovementSpeed;
+    public float horizontalMovementSpeed;
     public int xHitDirection;
 
     public KeyCode upKey;
     public KeyCode downKey;
+
+    public KeyCode leftKey;
+    public KeyCode rightKey;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +33,16 @@ public class Paddle : MonoBehaviour
         {
             MoveDown();
         }
+
+        if (Input.GetKey(leftKey) && transform.position.x < maxXPosition)
+        {
+            MoveLeft();
+        }
+        else if (Input.GetKey(rightKey) && transform.position.x >-maxXPosition)
+        {
+            MoveRight();
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -48,6 +63,16 @@ public class Paddle : MonoBehaviour
     void MoveDown()
     {
         transform.position += Vector3.down * verticalMovementSpeed;
+    }
+
+    void MoveLeft()
+    {
+        transform.position += Vector3.left * horizontalMovementSpeed;
+    }
+
+    void MoveRight()
+    {
+        transform.position += Vector3.right * horizontalMovementSpeed;
     }
 
     void HitBall()
