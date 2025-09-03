@@ -1070,7 +1070,20 @@ MonoBehaviour:
   maxScore: 5
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
-  endGameText: {fileID: 595364195}
+  winText: {fileID: 595364195}
+  winMessage: 
+  p1WinMessages:
+  - Congrats, you beat pong.
+  - I bet your mother is proud of you.
+  - So this is how you spend your free time, huh?
+  - 'YAAAY! '
+  - GOATED PLAYER 1
+  p2WinMessages:
+  - You win, Jackass!
+  - You ever wonder what brought you here?
+  - Woohoo!
+  - Oh yeah, Mr. Krabz!
+  - GOATED PLAYER 2
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
