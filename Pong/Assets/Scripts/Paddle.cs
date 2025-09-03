@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Paddle : MonoBehaviour
 {
     public float maxYPosition;
     public float verticalMovementSpeed;
     public int xHitDirection;
+    public int rotateSpeed;
 
     public KeyCode upKey;
     public KeyCode downKey;
@@ -20,6 +24,8 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RotationSpeed();
+
         if (Input.GetKey(upKey) && transform.position.y < maxYPosition)
         { 
             MoveUp();
@@ -49,9 +55,9 @@ public class Paddle : MonoBehaviour
     {
         transform.position += Vector3.down * verticalMovementSpeed;
     }
-
     void HitBall()
-    { 
-    
+    {
     }
+
+    private void RotationSpeed();
 }
