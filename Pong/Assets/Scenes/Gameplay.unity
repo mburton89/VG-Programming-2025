@@ -1071,7 +1071,14 @@ MonoBehaviour:
   p1ScoreText: {fileID: 422591139}
   p2ScoreText: {fileID: 931282839}
   winText: {fileID: 595364195}
-  winMessage: win
+  p1WinMessages:
+  - P1 Winna
+  - P1 Won
+  - P1 Wan
+  p2WinMessages:
+  - P2 Winna
+  - P2 Won
+  - P2 Wan
 --- !u!4 &966753887
 Transform:
   m_ObjectHideFlags: 0
