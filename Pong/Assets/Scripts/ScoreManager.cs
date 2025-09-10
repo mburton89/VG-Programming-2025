@@ -33,10 +33,12 @@ public class ScoreManager : MonoBehaviour
         if (isP1)
         {
             p1Score += 1;
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
         }
         else 
         {
             p2Score += 1;
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
         }
 
         if ( p1Score >= maxScore || p2Score >= maxScore)
@@ -64,12 +66,14 @@ public class ScoreManager : MonoBehaviour
         {
             int rand = Random.Range(0, p1WinMessages.Count);
             messageToDisplay = p1WinMessages[rand];
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
         }
 
         else
         {
             int rand = Random.Range(0, p2WinMessages.Count);
             messageToDisplay= p2WinMessages[rand];
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
         }
         
         winText.SetText(messageToDisplay);
