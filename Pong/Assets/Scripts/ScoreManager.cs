@@ -34,10 +34,12 @@ public class ScoreManager : MonoBehaviour
         if (isP1)
         {
             p1Score += 1;
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
         }
         else 
         {
             p2Score += 1;
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
         }
 
         if(p1Score >= maxScore || p2Score >= maxScore)
@@ -74,6 +76,8 @@ public class ScoreManager : MonoBehaviour
         }
 
         winText.SetText(messageToDisplay);
+
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
     }
 
     void ResetGame()
