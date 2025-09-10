@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.01
+  movementSpeedIncreaseMult: 1.05
   direction: {x: 1, y: 0, z: 0}
   maxYPosition: 4.8
   maxXPosition: 8.5

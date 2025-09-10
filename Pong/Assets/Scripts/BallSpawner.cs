@@ -18,7 +18,7 @@ public class BallSpawner : MonoBehaviour
     void Start()
     {
         float randStart = Random.Range(-1.0f, 1.0f);
-        if (randStart < 1)
+        if (randStart < 0)
         {
             SpawnBall(true);
         }
@@ -65,6 +65,7 @@ public class BallSpawner : MonoBehaviour
 
         newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
 
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
     }
 
 

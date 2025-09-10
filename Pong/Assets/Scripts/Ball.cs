@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public float movementSpeed;
+    public float movementSpeedIncreaseMult;
     public Vector3 direction;
 
     public float maxYPosition;
@@ -26,6 +27,7 @@ public class Ball : MonoBehaviour
     public void GetHit(Vector3 hitDirection)
     {
         direction = hitDirection;
+        movementSpeed *= movementSpeedIncreaseMult;
     }
 
     void Move()
@@ -38,20 +40,24 @@ public class Ball : MonoBehaviour
         if (transform.position.y > maxYPosition && direction.y > 0)
         { 
             direction = new Vector3(direction.x, -direction.y, 0);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
         }
         else if (transform.position.y < -maxYPosition && direction.y < 0)
         {
             direction = new Vector3(direction.x, -direction.y, 0);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
         }
 
         if (transform.position.x > maxXPosition)
         {
             ScoreManager.Instance.GivePoint(true);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
             Destroy(gameObject);
         }
         else if (transform.position.x < -maxXPosition)
         {
             ScoreManager.Instance.GivePoint(false);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
             Destroy(gameObject);
         }
     }

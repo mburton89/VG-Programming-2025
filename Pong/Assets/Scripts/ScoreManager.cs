@@ -74,6 +74,7 @@ public class ScoreManager : MonoBehaviour
             messageToDisplay= p2WinMessages[rand];
         }
         winText.SetText(messageToDisplay);
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
     }
 
     void ResetGame()
