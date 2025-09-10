@@ -54,9 +54,9 @@ public class ScoreManager : MonoBehaviour
         
         }
 
-         
 
 
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
 
         UpdateScoreboard();
     }
