@@ -80,7 +80,10 @@ public class ScoreManager : MonoBehaviour
 
         void ResetGame()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //if (Input.GetKey(spaceKey))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 }

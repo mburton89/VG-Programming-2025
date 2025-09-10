@@ -18,16 +18,14 @@ public class Paddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotationSpeed();
-
         if (Input.GetKey(upKey) && transform.position.y < maxYPosition)
-        { 
+        {
             MoveUp();
         }
         else if (Input.GetKey(downKey) && transform.position.y > -maxYPosition)
@@ -44,20 +42,22 @@ public class Paddle : MonoBehaviour
             Vector3 newHitDirection = new Vector3(xHitDirection, yHitDirection, 0);
             collision.gameObject.GetComponent<Ball>().GetHit(newHitDirection);
         }
+
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.paddle);
     }
 
-    void MoveUp()
+    public void MoveUp()
     {
         transform.position += Vector3.up * verticalMovementSpeed;
     }
 
-    void MoveDown()
+    public void MoveDown()
     {
         transform.position += Vector3.down * verticalMovementSpeed;
     }
     void HitBall()
     {
-    }
 
-    private void RotationSpeed();
+    }
 }
+    
