@@ -73,6 +73,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         winText.SetText(messageToDisplay);
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
     }
 
     void ResetGame()

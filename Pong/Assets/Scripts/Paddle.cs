@@ -37,15 +37,17 @@ public class Paddle : MonoBehaviour
             float yHitDirection = collision.transform.position.y - transform.position.y;
             Vector3 newHitDirection = new Vector3(xHitDirection, yHitDirection, 0);
             collision.gameObject.GetComponent<Ball>().GetHit(newHitDirection);
+            collision.gameObject.GetComponent<Ball>().IncreaseSpeed();
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
         }
     }
 
-    void MoveUp()
+    public void MoveUp()
     {
         transform.position += Vector3.up * verticalMovementSpeed;
     }
 
-    void MoveDown()
+    public void MoveDown()
     {
         transform.position += Vector3.down * verticalMovementSpeed;
     }
