@@ -33,7 +33,6 @@ public class BallSpawner : MonoBehaviour
 
     public void SpawnBall(bool isP1)
     {
-        Debug.Log("Spawn Ball");
         GameObject newBall = Instantiate(ballPrefab);
 
         float xDirection;
@@ -52,5 +51,7 @@ public class BallSpawner : MonoBehaviour
         newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
 
         canSpawnBall = false;
+
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
     }
 }

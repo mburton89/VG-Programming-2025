@@ -7,6 +7,8 @@ public class Ball : MonoBehaviour
     public float movementSpeed;
     public Vector3 direction;
 
+    public float speedIncrease;
+
     public float maxYPosition;
     public float maxXPosition;
 
@@ -26,6 +28,7 @@ public class Ball : MonoBehaviour
     public void GetHit(Vector3 hitDirection)
     {
         direction = hitDirection;
+        movementSpeed += speedIncrease;
     }
 
     void Move()
@@ -48,11 +51,13 @@ public class Ball : MonoBehaviour
         {
             ScoreManager.Instance.GivePoint(true);
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
         }
         else if (transform.position.x < -maxXPosition)
         {
             ScoreManager.Instance.GivePoint(false);
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
         }
     }
 }

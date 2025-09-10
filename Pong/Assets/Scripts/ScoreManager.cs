@@ -63,6 +63,8 @@ public class ScoreManager : MonoBehaviour
 
     void HandleWin(bool isP1)
     {
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
+
         string messageToDisplay;
 
         if(isP1)
