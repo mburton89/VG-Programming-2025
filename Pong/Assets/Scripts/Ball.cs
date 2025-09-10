@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour
     public float maxYPosition;
     public float maxXPosition;
 
+    public float speedIncrease;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,8 @@ public class Ball : MonoBehaviour
     public void GetHit(Vector3 hitDirection)
     {
         direction = hitDirection;
+        SoundManager.instance.PlaySound(SoundManager.SoundType.serve);
+        movementSpeed += speedIncrease;
     }
 
     void Move()
