@@ -51,6 +51,7 @@ public class ScoreManager : MonoBehaviour
             BallSpawner.Instance.SpawnBall(isP1);
         }
 
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
         UpdateScoreboard();
     }
 
@@ -63,6 +64,8 @@ public class ScoreManager : MonoBehaviour
     void HandleWin(bool isP1)
     {
         gameOver.SetText(endText);
+
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
 
         string messageToDisplay;
 

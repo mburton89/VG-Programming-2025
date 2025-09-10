@@ -40,12 +40,12 @@ public class HorizontalPaddle : MonoBehaviour
         }
     }
 
-    void MoveRight()
+    public void MoveRight()
     {
         transform.position += Vector3.right * horizontalMovementSpeed;
     }
 
-    void MoveLeft()
+    public void MoveLeft()
     {
         transform.position += Vector3.left * horizontalMovementSpeed;
     }

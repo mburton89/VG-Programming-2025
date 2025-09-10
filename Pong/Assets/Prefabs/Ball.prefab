@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b9656233cccda4cb98135435c64637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.05
+  movementSpeed: 0.01
   direction: {x: 1, y: 0, z: 0}
   maxYPosition: 4.8
   maxXPosition: 10
+  speedIncrease: 0.01
 --- !u!61 &1561998344355285723
 BoxCollider2D:
   m_ObjectHideFlags: 0
