@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour
     public float maxYPosition;
     public float maxXPosition;
 
+    public float speedIncrease;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,8 @@ public class Ball : MonoBehaviour
     public void GetHit(Vector3 hitDirection)
     {
         direction = hitDirection;
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
+        movementSpeed += speedIncrease;
     }
 
     void Move()
@@ -38,10 +42,12 @@ public class Ball : MonoBehaviour
         if (transform.position.y > maxYPosition && direction.y > 0)
         { 
             direction = new Vector3(direction.x, -direction.y, 0);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
         }
         else if (transform.position.y < -maxYPosition && direction.y < 0)
         {
             direction = new Vector3(direction.x, -direction.y, 0);
+            SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
         }
 
         if (transform.position.x > maxXPosition)

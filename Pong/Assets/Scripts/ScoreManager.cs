@@ -49,6 +49,9 @@ public class ScoreManager : MonoBehaviour
         }
 
         UpdateScoreboard();
+
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.goal);
+
     }
 
     void UpdateScoreboard()
@@ -73,6 +76,9 @@ public class ScoreManager : MonoBehaviour
         }
 
        winText.SetText(messageToDisplay);
+
+       SoundManager.Instance.PlaySound(SoundManager.SoundType.win);
+
     }
 
     void ResetGame()

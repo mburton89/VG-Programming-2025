@@ -56,5 +56,7 @@ public class BallSpawner : MonoBehaviour
         spawnDirection = new Vector3(xDirection, randY, 0);
 
         newBall.GetComponent<Ball>().direction = spawnDirection.normalized;
+
+        SoundManager.Instance.PlaySound(SoundManager.SoundType.serve);
     }
 }
