@@ -67,7 +67,7 @@ public class ScoreManager : MonoBehaviour
         if (isP1)
         {
             int rand = Random.Range(0, p1WinMessages.Count);
-            messageToDisplay = p1WinMessages[rand];
+            messageToDisplay = p1WinMessages[r4and];
         }
         else 
         {
