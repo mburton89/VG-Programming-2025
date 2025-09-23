@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class FPSController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
     public float mouseSensitivity = 2.0f;
@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
     private CharacterController characterController;
     private float verticalRotation = 0;
     private float verticalVelocity = 0;
+
+    private bool flying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,13 @@ public class Movement : MonoBehaviour
                 print("jump");
                 verticalVelocity = jumpForce;
                 moveSpeed = originSpeed;
+
+                // Flying
+                float h = Input.GetAxis("Horizontal");
+                float v = Input.GetAxis("Vertical");
+
+                Vector3 move = transform.right * h + transform.forward * v;
+                StartCoroutine(Flying(1f, 0, 0.5f,10,move));
             }
         }
         else
@@ -78,5 +87,33 @@ public class Movement : MonoBehaviour
                 moveSpeed = originSpeed;
             }
         }
+    }
+
+    private IEnumerator Flying(float timeBeforeFly, float currentVelocity, float rate, int flyLimit, Vector3 move)
+    {
+        print("Waiting");
+        yield return new WaitForSeconds(timeBeforeFly);
+        print("Working");
+        while (Input.GetKey(KeyCode.Space))
+        {
+            print("Holding up");
+            move.y = 1;
+
+            if (currentVelocity >= flyLimit)
+            {
+                currentVelocity = flyLimit;
+                print("Stop");
+            }
+            else
+            {
+                currentVelocity += rate;
+                print("Fly now");
+            }
+        }
+
+        move.y = -1;
+        currentVelocity = 0;
+        print("Release");
+        transform.GetComponent<CharacterController>().Move(move * currentVelocity * Time.deltaTime);
     }
 }
