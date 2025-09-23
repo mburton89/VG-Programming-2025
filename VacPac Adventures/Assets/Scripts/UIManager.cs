@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     //temp
     public float currenthealth;
     public float maxHealth;
+    public float currentFuel;
+    public float maxFuel;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,13 @@ public class UIManager : MonoBehaviour
         //get player health
         //
         healthBarFill.fillAmount = currenthealth / maxHealth;
+    }
+
+    void JetFuelBar()
+    {
+        //get player health
+        //
+        jetFuelBarFill.fillAmount = currenthealth / maxHealth;
     }
 
     private void CheckpointMarkers()
