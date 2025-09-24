@@ -60,11 +60,11 @@ public class Slime : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            
 
             if (isRelaxed)
             {
                 isRelaxed = false;
+                //tag offending Enemy with variable to be used in FleeFromEnemy to move away
                 StartCoroutine(FleeFromEnemy());
             }
             }
@@ -76,11 +76,9 @@ public class Slime : MonoBehaviour
         {
             Debug.Log("Flee From Enemy");
 
-            // set enemy
-
             //hop away from enemy
-
-
+            //Vector3 directionToFlee = new Vector3(enemy.position.x + transform.position.x, randY, enemy.position.z + transform.position.z);
+            //rigidBody.AddForce(directionToFlee * slimeSpeed / slimeSize, ForceMode.Impulse);
 
             yield return new WaitForSeconds(1);
 
