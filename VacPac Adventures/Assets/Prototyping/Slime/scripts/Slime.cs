@@ -75,16 +75,19 @@ public class Slime : MonoBehaviour
         do
         {
             Debug.Log("Flee From Enemy");
+            StartCoroutine(HopQuicklyAway());
 
-            //hop away from enemy
-            //Vector3 directionToFlee = new Vector3(enemy.position.x + transform.position.x, randY, enemy.position.z + transform.position.z);
-            //rigidBody.AddForce(directionToFlee * slimeSpeed / slimeSize, ForceMode.Impulse);
+            IEnumerator HopQuicklyAway()
+            {
+                //hop away from enemy
+                //Vector3 directionToFlee = new Vector3(enemy.position.x + transform.position.x, randY, enemy.position.z + transform.position.z);
+                //rigidBody.AddForce(directionToFlee * slimeSpeed / slimeSize, ForceMode.Impulse);
 
-            yield return new WaitForSeconds(1);
-
-            //do this ^^^^ a number of times
-
-
+                //time between hops
+                yield return new WaitForSeconds(1);
+            }
+            // cooldown after enemy leaves collision?
+            yield return new WaitForSeconds(4);
             //if no Enemy in trigger, set isRelaxed to True
 
         } while (isRelaxed == false);
