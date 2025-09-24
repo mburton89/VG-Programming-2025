@@ -19,6 +19,8 @@ public class VacPackAlpha : MonoBehaviour
 
     private RaycastHit _hit;
 
+    public Transform spawnPoint;
+
     void Awake()
     {
         Instance = this;
@@ -73,7 +75,7 @@ public class VacPackAlpha : MonoBehaviour
         void Shoot()
         {
             cooldown = shootRate;
-            Instantiate(SlimeBullet);
+            Instantiate(SlimeBullet, spawnPoint.position, transform.rotation, null);
             Debug.Log("pew");
 
 
