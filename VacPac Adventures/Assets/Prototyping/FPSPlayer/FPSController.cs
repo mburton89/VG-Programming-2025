@@ -23,6 +23,8 @@ public class FPSController : MonoBehaviour
     public float flyLimit = 10f;
     private bool flying = false;
 
+    public float fuelConsumptionRate = 0.01f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,11 +98,15 @@ public class FPSController : MonoBehaviour
         else
         {
             // Flying
+
             print("Not on ground");
             print(flying);
 
             if (flying == true)
             {
+                //Call Fuel Bar
+                PlayerTemp.Instance.currentFuel -= fuelConsumptionRate;
+                
                 float h = Input.GetAxis("Horizontal");
                 float v = Input.GetAxis("Vertical");
 
