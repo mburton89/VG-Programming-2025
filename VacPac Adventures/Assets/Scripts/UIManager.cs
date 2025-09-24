@@ -15,12 +15,16 @@ public class UIManager : MonoBehaviour
     //float maxPlayerHeight;
     //float currentPlayerHeight;
     private int playerHeightScore;
+    private int highScore;
     public TextMeshProUGUI playerHeightScoreTMP;
+    public TextMeshProUGUI playerBestScoreTMP;
+    public KeyCode resetScoreKey;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        highScore = PlayerPrefs.GetInt("highScore");
+        playerBestScoreTMP.SetText("Best Height: " +  highScore);
     }
 
     // Update is called once per frame
@@ -29,6 +33,10 @@ public class UIManager : MonoBehaviour
         HealthBar();
         JetFuelBar();
         HeightScoreUpdate();
+        if (Input.GetKey(resetScoreKey))
+        {
+            ResetBestScore();
+        }
     }
 
 
@@ -59,6 +67,28 @@ public class UIManager : MonoBehaviour
             playerHeightScore = (int)PlayerTemp.Instance.transform.position.y;
             //print(playerHeightScore);
             playerHeightScoreTMP.SetText("Max Height: " + playerHeightScore);
+            if (playerHeightScore > PlayerPrefs.GetInt("highScore"))
+            {
+                BestScoreUpdate();
+            }
         }
+    }
+
+    private void BestScoreUpdate()
+    {
+        PlayerPrefs.SetInt("highScore", playerHeightScore);
+        highScore = PlayerPrefs.GetInt("highScore");
+        playerBestScoreTMP.SetText("Best Height: " + highScore);
+        //print("UpdateBestScore");
+        PlayerPrefs.Save();
+    }
+
+    private void ResetBestScore()
+    {
+        PlayerPrefs.SetInt("highScore", 0);
+        highScore = PlayerPrefs.GetInt("highScore");
+        playerBestScoreTMP.SetText("Best Height: " + highScore);
+        //print("UpdateBestScore");
+        PlayerPrefs.Save();
     }
 }
