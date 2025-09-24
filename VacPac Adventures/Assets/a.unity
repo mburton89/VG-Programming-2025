@@ -981,7 +981,7 @@ MonoBehaviour:
   jetFuelBarFill: {fileID: 920631089}
   playerHeightScoreTMP: {fileID: 1672445477}
   playerBestScoreTMP: {fileID: 1210162359}
-  resetScoreKey: 32
+  resetScoreKey: 269
 --- !u!114 &1894195642
 MonoBehaviour:
   m_ObjectHideFlags: 0
