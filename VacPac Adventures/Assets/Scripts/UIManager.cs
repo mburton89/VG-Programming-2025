@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,14 +11,11 @@ public class UIManager : MonoBehaviour
     public Image healthBarFill;
     public Image jetFuelBarFill;
 
-    float minPlayerHeight;
-    float maxPlayerHeight;
-
-    //temp
-    public float currenthealth;
-    public float maxHealth;
-    public float currentFuel;
-    public float maxFuel;
+    //float minPlayerHeight;
+    //float maxPlayerHeight;
+    //float currentPlayerHeight;
+    private int playerHeightScore;
+    public TextMeshProUGUI playerHeightScoreTMP;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +27,8 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         HealthBar();
+        JetFuelBar();
+        HeightScoreUpdate();
     }
 
 
@@ -36,19 +36,29 @@ public class UIManager : MonoBehaviour
     {
         //get player health
         //
-        healthBarFill.fillAmount = currenthealth / maxHealth;
+        healthBarFill.fillAmount = PlayerTemp.Instance.currenthealth / PlayerTemp.Instance.maxHealth;
     }
 
     void JetFuelBar()
     {
         //get player health
         //
-        jetFuelBarFill.fillAmount = currenthealth / maxHealth;
+        jetFuelBarFill.fillAmount = PlayerTemp.Instance.currentFuel / PlayerTemp.Instance.maxFuel;
     }
 
     private void CheckpointMarkers()
     {
         // float variableCheckpointLocation = (maxHeight - Min Height) / (checpointLocation - minHeight)
         //
+    }
+
+    private void HeightScoreUpdate()
+    {
+        if (playerHeightScore + 1 <= PlayerTemp.Instance.transform.position.y)
+        {
+            playerHeightScore = (int)PlayerTemp.Instance.transform.position.y;
+            //print(playerHeightScore);
+            playerHeightScoreTMP.SetText("Max Height: " + playerHeightScore);
+        }
     }
 }
