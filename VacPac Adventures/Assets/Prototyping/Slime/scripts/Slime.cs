@@ -65,6 +65,7 @@ public class Slime : MonoBehaviour
             {
                 isRelaxed = false;
                 //tag offending Enemy with variable to be used in FleeFromEnemy to move away
+
                 StartCoroutine(FleeFromEnemy());
             }
             }
