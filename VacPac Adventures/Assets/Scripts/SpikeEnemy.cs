@@ -7,6 +7,8 @@ public class SpikeEnemy : MonoBehaviour
 {
     public GameObject target;
 
+    public Animator animator;
+
     public List<GameObject> spikes;
 
     public GameObject slimeDropPrefab;
@@ -40,23 +42,28 @@ public class SpikeEnemy : MonoBehaviour
     public void Attack()
     {
         Debug.Log("Attack");
+
+
         StartCoroutine(GrowSpikes());
         //Player.TakeDamage(spikeEnemyDamage);
     }
 
     IEnumerator GrowSpikes()
     {
-        foreach (var spike in spikes)
-        {
-            spike.transform.localScale = new Vector3(6f, spike.transform.localScale.y, spike.transform.localScale.z);
-        }
+        animator.SetBool("isAttacking", true);
+        //foreach (var spike in spikes)
+        //{
+        //    spike.transform.localScale = new Vector3(6f, spike.transform.localScale.y, spike.transform.localScale.z);
+        //}
 
         yield return new WaitForSeconds(0.5f);
 
-        foreach (var spike in spikes)
-        {
-            spike.transform.localScale = new Vector3(0.2f, spike.transform.localScale.y, spike.transform.localScale.z);
-        }
+        animator.SetBool("isAttacking", false);
+
+        //foreach (var spike in spikes)
+        //{
+        //    spike.transform.localScale = new Vector3(0.2f, spike.transform.localScale.y, spike.transform.localScale.z);
+        //}
 
         StopCoroutine(GrowSpikes());
     }
