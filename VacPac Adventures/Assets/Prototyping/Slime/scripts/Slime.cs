@@ -90,7 +90,7 @@ public class Slime : MonoBehaviour
             //Move in new direction (translate in newVector)
             //transform.Translate(newDirection * slimeSpeed * Time.deltaTime);
             rigidBody.AddForce(newDirection * slimeSpeed, ForceMode.Impulse);
-            Debug.Log("AddForce");
+            Debug.Log("Fleeing");
 
             // cooldown after enemy leaves collision?
             yield return new WaitForSeconds(1);
