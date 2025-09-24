@@ -74,29 +74,34 @@ public class Slime : MonoBehaviour
     {
         do
         {
-            Debug.Log("Flee From Enemy");
-            StartCoroutine(HopQuicklyAway());
 
-            IEnumerator HopQuicklyAway()
-            {
-                //hop away from enemy
-                //Vector3 directionToFlee = new Vector3(enemy.position.x + transform.position.x, randY, enemy.position.z + transform.position.z);
-                //rigidBody.AddForce(directionToFlee * slimeSpeed / slimeSize, ForceMode.Impulse);
+            //hop away from enemy
+            //Vector3 directionToFlee = new Vector3(enemy.position.x + transform.position.x, randY, enemy.position.z + transform.position.z);
+            //rigidBody.AddForce(directionToFlee * slimeSpeed / slimeSize, ForceMode.Impulse);
 
-                //time between hops
-                yield return new WaitForSeconds(1);
-            }
+            //TEMPORARY QUICK HOPS FOR DEBUG
+            int randX = Random.Range(-5, 5);
+            int randY = Random.Range(5, 20);
+            int randZ = Random.Range(-5, 5);
+
+            //Pick new Direction (create a new Vector3)
+            Vector3 newDirection = new Vector3(randX, randY, randZ);
+
+            //Move in new direction (translate in newVector)
+            //transform.Translate(newDirection * slimeSpeed * Time.deltaTime);
+            rigidBody.AddForce(newDirection * slimeSpeed, ForceMode.Impulse);
+            Debug.Log("AddForce");
+
             // cooldown after enemy leaves collision?
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(1);
             //if no Enemy in trigger, set isRelaxed to True
 
         } while (isRelaxed == false);
 
 
         // Slimes flee from Enemy (not player)
-        // Need Enemy script 
-        // Need awareness field 
         // Enemy triggers Awareness collider -> run FleeFromEnemy for 3 -> check Awareness -> bool isReleaxed
+
     }
 
     void StruggleWithVacPac()
