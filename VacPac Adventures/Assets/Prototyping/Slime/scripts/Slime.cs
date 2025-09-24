@@ -60,6 +60,7 @@ public class Slime : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            //get transform of other.gameObject and store in variable
 
             if (isRelaxed)
             {
