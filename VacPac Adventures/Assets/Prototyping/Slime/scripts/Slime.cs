@@ -30,11 +30,6 @@ public class Slime : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
     IEnumerator IdleWander()
     {
         Debug.Log("IdleWander" + isRelaxed);
@@ -60,8 +55,43 @@ public class Slime : MonoBehaviour
         } while (isRelaxed);
     }
 
-    void FleeFromEnemy()
+    //Detect intrusion to Awareness BY ENEMY
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Enemy")
+        {
+            
+
+            if (isRelaxed)
+            {
+                isRelaxed = false;
+                StartCoroutine(FleeFromEnemy());
+            }
+            }
+    }
+
+    IEnumerator FleeFromEnemy()
+    {
+        do
+        {
+            Debug.Log("Flee From Enemy");
+
+            // set enemy
+
+            //hop away from enemy
+
+
+
+            yield return new WaitForSeconds(1);
+
+            //do this ^^^^ a number of times
+
+
+            //if no Enemy in trigger, set isRelaxed to True
+
+        } while (isRelaxed == false);
+
+
         // Slimes flee from Enemy (not player)
         // Need Enemy script 
         // Need awareness field 
