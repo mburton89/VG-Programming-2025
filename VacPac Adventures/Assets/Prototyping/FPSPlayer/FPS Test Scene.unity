@@ -372,6 +372,8 @@ MonoBehaviour:
   mouseSensitivity: 5
   jumpForce: 5
   playerCamera: {fileID: 445165051}
+  rate: 0.005
+  flyLimit: 10
 --- !u!65 &1848489349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -558,8 +560,8 @@ Transform:
   m_GameObject: {fileID: 2085898905}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6723518, y: 1.9238214, z: 1.6609619}
-  m_LocalScale: {x: 24.27, y: 1, z: 18.552}
+  m_LocalPosition: {x: -3.6723518, y: 1.9238214, z: 1.661}
+  m_LocalScale: {x: 55.29677, y: 1, z: 65.66852}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FPSController : MonoBehaviour
@@ -15,6 +16,11 @@ public class FPSController : MonoBehaviour
     private float verticalRotation = 0;
     private float verticalVelocity = 0;
 
+    // Fly Stats
+
+    private float currentVelocity = 0;
+    public float rate = 0.01f;
+    public float flyLimit = 10f;
     private bool flying = false;
 
     // Start is called before the first frame update
@@ -47,34 +53,34 @@ public class FPSController : MonoBehaviour
         Vector3 movement = new Vector3(moveSideways, verticalVelocity, moveForward);
         movement = transform.rotation * movement;
 
-        // Jumping
+        // Space check
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            flying = true;
+        }
+        else
+        {
+            flying = false;
+            currentVelocity = 0;
+        }
+
+        // Air check
         if (characterController.isGrounded)
         {
+
+            // Jumping
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 print("jump");
                 verticalVelocity = jumpForce;
                 moveSpeed = originSpeed;
 
-                // Flying
-                float h = Input.GetAxis("Horizontal");
-                float v = Input.GetAxis("Vertical");
-
-                Vector3 move = transform.right * h + transform.forward * v;
-                StartCoroutine(Flying(1f, 0, 0.5f,10,move));
+                StartCoroutine(Flying(0.5f));
             }
-        }
-        else
-        {
-            verticalVelocity -= Time.deltaTime * 10.0f; // Apply gravity
-        }
 
-        characterController.Move(movement * Time.deltaTime);
-
-        //Sprinting
-
-        if (characterController.isGrounded)
-        {
+            // Sprinting
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
@@ -87,33 +93,74 @@ public class FPSController : MonoBehaviour
                 moveSpeed = originSpeed;
             }
         }
+        else
+        {
+            // Flying
+            print("Not on ground");
+            print(flying);
+
+            if (flying == true)
+            {
+                float h = Input.GetAxis("Horizontal");
+                float v = Input.GetAxis("Vertical");
+
+                Vector3 move = transform.right * h + transform.forward * v;
+
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    print("Flying");
+
+                    if (currentVelocity < 0)
+                    {
+                        currentVelocity = 0;
+                    }
+
+                    if (verticalVelocity < 0)
+                    {
+                        verticalVelocity = 0;
+                    }
+
+                    if (currentVelocity >= flyLimit)
+                    {
+                        print("Limit reached");
+                        currentVelocity = flyLimit;
+                    }
+                    else
+                    {
+                        currentVelocity += rate;
+                    }
+
+                        move.y = 1;
+                }
+                else
+                {
+                    print("Release");
+                    move.y = verticalVelocity;
+                    verticalVelocity -= Time.deltaTime * 10.0f; // Apply gravity
+                    currentVelocity = 0;
+                }
+
+                transform.GetComponent<CharacterController>().Move(move * currentVelocity * Time.deltaTime);
+            }
+            else
+            {
+                verticalVelocity -= Time.deltaTime * 10.0f; // Apply gravity
+            }
+        }
+
+        characterController.Move(movement * Time.deltaTime);
     }
 
-    private IEnumerator Flying(float timeBeforeFly, float currentVelocity, float rate, int flyLimit, Vector3 move)
+    private IEnumerator Flying(float timeBeforeFly)
     {
         print("Waiting");
         yield return new WaitForSeconds(timeBeforeFly);
         print("Working");
-        while (Input.GetKey(KeyCode.Space))
+
+        if (Input.GetKey(KeyCode.Space)) // if holding space
         {
-            print("Holding up");
-            move.y = 1;
-
-            if (currentVelocity >= flyLimit)
-            {
-                currentVelocity = flyLimit;
-                print("Stop");
-            }
-            else
-            {
-                currentVelocity += rate;
-                print("Fly now");
-            }
+            print("Flying");
+            flying = true;
         }
-
-        move.y = -1;
-        currentVelocity = 0;
-        print("Release");
-        transform.GetComponent<CharacterController>().Move(move * currentVelocity * Time.deltaTime);
     }
 }
