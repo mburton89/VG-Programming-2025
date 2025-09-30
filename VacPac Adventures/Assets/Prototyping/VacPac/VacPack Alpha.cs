@@ -43,8 +43,7 @@ public class VacPackAlpha : MonoBehaviour
         }
 
             if (Input.GetKey(KeyCode.Mouse1))
-            {  
-
+            {
                 Absorb();
             }
 
@@ -63,10 +62,11 @@ public class VacPackAlpha : MonoBehaviour
            if (Physics.Raycast(transform.position, transform.forward, out _hit))
         {
             Debug.Log("Target Name: " + _hit.transform.name);
-                if (_hit.transform.GetComponent<SlimeVAC>() != null)
+               
+            if (_hit.transform.GetComponent<Slime>() != null)
             {
                 Debug.Log("Target Present");
-                _hit.transform.GetComponent<SlimeVAC>().getAbsorbed();
+                _hit.transform.GetComponent<Slime>().GetAbsorbed();
             }
         } 
             Debug.Log("click");

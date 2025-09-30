@@ -373,7 +373,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5880475866133162362, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
   m_PrefabInstance: {fileID: 1384396937}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &469148717
+--- !u!114 &469148722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,9 +382,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 469148716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92aece518b664444d9989a26f474cee5, type: 3}
+  m_Script: {fileID: 11500000, guid: d8e1a389fc297c94989705493b96b6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attractionSpeed: 20
+  targetObject: {fileID: 1498550849}
+  slimeSize: 0
+  slimeSpeed: 0
+  fuelPower: 0
+  rigidBody: {fileID: 0}
 --- !u!1 &635684389
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +706,14 @@ PrefabInstance:
     - target: {fileID: 5943069542256355749, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
       propertyPath: m_Name
       value: Slime - Hopper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450592667790857961, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
+      propertyPath: targetObject
+      value: 
+      objectReference: {fileID: 1498550849}
+    - target: {fileID: 8450592667790857961, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
+      propertyPath: attractionSpeed
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1174,7 +1188,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5880475866133162362, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 469148717}
+      addedObject: {fileID: 469148722}
   m_SourcePrefab: {fileID: 100100000, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
 --- !u!1001 &1407165240
 PrefabInstance:

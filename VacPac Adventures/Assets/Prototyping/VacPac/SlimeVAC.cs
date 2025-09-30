@@ -6,6 +6,6 @@ public class SlimeVAC : MonoBehaviour
 {
     public void getAbsorbed()
     {
-        Destroy(this.gameObject);
+        
     }
 }
