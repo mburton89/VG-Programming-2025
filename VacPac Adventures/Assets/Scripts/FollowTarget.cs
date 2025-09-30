@@ -35,10 +35,6 @@ public class FollowTarget : MonoBehaviour
 
            
         }
-        if (Input.GetKeyDown(KeyCode.F)) //F to feed
-        {
-            isBeingFed = true;
-        }
 
     }
 }
