@@ -63,10 +63,10 @@ public class VacPackAlpha : MonoBehaviour
            if (Physics.Raycast(transform.position, transform.forward, out _hit))
         {
             Debug.Log("Target Name: " + _hit.transform.name);
-                if (_hit.transform.GetComponent<Slime>() != null)
+                if (_hit.transform.GetComponent<SlimeVAC>() != null)
             {
                 Debug.Log("Target Present");
-                _hit.transform.GetComponent<Slime>().getAbsorbed();
+                _hit.transform.GetComponent<SlimeVAC>().getAbsorbed();
             }
         } 
             Debug.Log("click");
