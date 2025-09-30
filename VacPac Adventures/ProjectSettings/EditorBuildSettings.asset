@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SpikeEnemyTesting.unity
+    guid: 83f3437e9039a1e478f0ddf9a625b82d
   m_configObjects: {}

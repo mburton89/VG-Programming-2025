@@ -21,14 +21,14 @@ public class GameOver : MonoBehaviour
         if (gameOverCanvas != null)
         {
             gameOverCanvas.SetActive(true);
-            Time.timeScale = 0f;
+            
         }
 
     }
 
     public void RestartScene()
     {
-        Time.timeScale = 1f;
+       
 
         Scene activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name);
