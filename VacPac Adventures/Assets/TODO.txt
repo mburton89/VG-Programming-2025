@@ -1,0 +1,6 @@
+TODO
+ - Find and Implement Pet Logic (Max, Nate)
+ - Integrate Enemy Scripts in new branch (Aswanth, Zander)
+ - Absorb Slime moves slime toward player until "collected"
+ - Absorbing Slime refills fuel (and UI)
+ - Shooting Slime Damages Enemies (or pushes them off ledge)
