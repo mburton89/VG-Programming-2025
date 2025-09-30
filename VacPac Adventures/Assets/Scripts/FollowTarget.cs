@@ -19,14 +19,6 @@ public class FollowTarget : MonoBehaviour
     }
     void Update()
     {
-        if (isBeingFed)
-        {
-            transform.transl
-            if (transform.position.y >= maxJumpHeight)
-            {
-                isBeingFed = false;
-            }
-        }
 
         if (target != null)
         {
