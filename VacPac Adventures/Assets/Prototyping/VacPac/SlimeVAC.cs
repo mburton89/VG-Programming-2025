@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : MonoBehaviour
+public class SlimeVAC : MonoBehaviour
 {
     public void getAbsorbed()
     {
