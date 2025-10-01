@@ -2,12 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
     [Header("References")]
     public GameObject gameOverCanvas;
+    public static GameOver Instance;
+    public Button restartButton;
+    public Button mainMenuButton;
 
+    private void Awake()
+    {
+        Instance = this;
+        restartButton.onClick.AddListener(RestartScene);
+        mainMenuButton.onClick.AddListener(MainMenuSceneLoad);
+    }
+
+    public void Update()
+    {
+        if (PlayerTemp.Instance.currenthealth <= 0)
+        {
+            ShowGameOver();
+        }
+
+    }
+    // should be moved to enemy script
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
@@ -15,13 +35,17 @@ public class GameOver : MonoBehaviour
             ShowGameOver();
         }
     }
+    // end should be moved
 
-    private void ShowGameOver()
+    public void ShowGameOver()
     {
         if (gameOverCanvas != null)
         {
+            UIManager.Instance.AddTimeToScore();
             gameOverCanvas.SetActive(true);
-            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //Time.timeScale = 0f;
         }
 
     }
@@ -29,9 +53,13 @@ public class GameOver : MonoBehaviour
     public void RestartScene()
     {
         Time.timeScale = 1f;
-
-        Scene activeScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(activeScene.name);
+        GameManager.instance.RestartScene();
 
     }
+    public void MainMenuSceneLoad()
+    {
+        Time.timeScale = 1f;
+        GameManager.instance.LoadMainMenu();
+    }
+
 }
