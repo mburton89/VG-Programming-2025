@@ -95,6 +95,7 @@ public class FPSController : MonoBehaviour
                 moveSpeed = originSpeed;
             }
         }
+
         else
         {
             // Flying
@@ -102,10 +103,15 @@ public class FPSController : MonoBehaviour
             print("Not on ground");
             print(flying);
 
+
             if (flying == true)
             {
                 //Call Fuel Bar
                 PlayerTemp.Instance.currentFuel -= fuelConsumptionRate;
+
+
+                //grr
+                PlayerTemp.Instance.currentFuel = Mathf.Clamp(PlayerTemp.Instance.currentFuel, 0, PlayerTemp.Instance.maxFuel);
                 
                 float h = Input.GetAxis("Horizontal");
                 float v = Input.GetAxis("Vertical");
@@ -152,6 +158,7 @@ public class FPSController : MonoBehaviour
             {
                 verticalVelocity -= Time.deltaTime * 10.0f; // Apply gravity
             }
+
         }
 
         characterController.Move(movement * Time.deltaTime);
