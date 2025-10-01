@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     private bool playerDetected = false;
     private bool lockedOnPlayer;
 
-
+    public GameObject explosionEffect;
     void Start()
     {
         if (agent == null)
@@ -107,9 +107,24 @@ public class EnemyAI : MonoBehaviour
             lockedOnPlayer = true;
             player = collision.collider.transform;
         }
+
+        if (collision.collider.CompareTag("EnemyKiller"))
+            {
+
+            if (explosionEffect != null)
+            {
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+            }
+
+            Destroy(gameObject);
+        }
+
+
+
+
     }
 
-
-
+   
 
 }
