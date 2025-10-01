@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
+    public static FPSController Instance;
+
     public float moveSpeed = 5.0f;
     public float mouseSensitivity = 2.0f;
     public float jumpForce = 5.0f;
@@ -29,6 +31,7 @@ public class FPSController : MonoBehaviour
     void Start()
     {
         {
+            Instance = this;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 

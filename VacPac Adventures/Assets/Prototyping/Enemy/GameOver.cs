@@ -42,6 +42,9 @@ public class GameOver : MonoBehaviour
         if (gameOverCanvas != null)
         {
             UIManager.Instance.AddTimeToScore();
+            FPSController.Instance.moveSpeed = 0;
+            FPSController.Instance.mouseSensitivity = 0;
+            FPSController.Instance.jumpForce = 0;
             gameOverCanvas.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
