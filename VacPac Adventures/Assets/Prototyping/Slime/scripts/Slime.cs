@@ -18,13 +18,16 @@ public class Slime : MonoBehaviour
 
     //public  Awareness;
 
+    Coroutine idleWanderCoroutine;
+    Coroutine fleeCoroutine;
+
 
     // Start is called before the first frame update
     void Start()
     {
         //Start coroutine IdleWander
-        isRelaxed = true; 
-        StartCoroutine(IdleWander());
+        isRelaxed = true;
+        idleWanderCoroutine = StartCoroutine(IdleWander());
     }
 
     // Update is called once per frame
@@ -36,7 +39,12 @@ public class Slime : MonoBehaviour
     IEnumerator IdleWander()
     {
         Debug.Log("IdleWander" + isRelaxed);
-        StopCoroutine(FleeFromEnemy());
+
+        if (fleeCoroutine != null)
+        { 
+            StopCoroutine(fleeCoroutine);
+            fleeCoroutine = null;
+        }
 
         do
         {
@@ -49,7 +57,6 @@ public class Slime : MonoBehaviour
 
             //Move in new direction (translate in newVector)
             rigidBody.AddForce(newDirection * slimeSpeed, ForceMode.Impulse);
-            Debug.Log("AddForce");
 
             //Wait 10 seconds
             //yield on a new YieldInstruction that waits for 5 seconds
@@ -70,16 +77,21 @@ public class Slime : MonoBehaviour
             {
                 isRelaxed = false;
                 //tag offending Enemy with variable to be used in FleeFromEnemy to move away
-                StartCoroutine(FleeFromEnemy());
+
+                if (idleWanderCoroutine != null)
+                {
+                    StopCoroutine(idleWanderCoroutine);
+                    idleWanderCoroutine = null;
+                }
+
+                fleeCoroutine = StartCoroutine(FleeFromEnemy());
                 print("Starting Flee From Enemy");
-            }
-            }
+            } 
+        }
     }
 
     IEnumerator FleeFromEnemy()
     {
-        StopCoroutine(IdleWander());
-
         do
         {
 
@@ -93,8 +105,7 @@ public class Slime : MonoBehaviour
 
             Vector3 directionToFlee = new Vector3(fleeDirectionX, randY, fleeDirectionZ);
 
-            rigidBody.AddForce(directionToFlee * slimeSpeed, ForceMode.Impulse);
-            Debug.Log("Fleeing");
+            rigidBody.AddForce(directionToFlee * slimeSpeed * 2, ForceMode.Impulse);
 
             // time between hops
             yield return new WaitForSeconds(1.5f);
@@ -118,7 +129,7 @@ public class Slime : MonoBehaviour
         yield return new WaitForSeconds(8);
         isRelaxed = true;
         print("isRelaxed= " + isRelaxed);
-        StartCoroutine(IdleWander());
+        idleWanderCoroutine = StartCoroutine(IdleWander());
     }
 
     void StruggleWithVacPac()
