@@ -385,12 +385,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e1a389fc297c94989705493b96b6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractionSpeed: 20
-  targetObject: {fileID: 1498550849}
   slimeSize: 0
   slimeSpeed: 0
   fuelPower: 0
-  rigidBody: {fileID: 0}
+  rigidBody: {fileID: 1381942511}
+  attractionSpeed: 20
+  targetObject: {fileID: 1498550849}
+--- !u!54 &469148723
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469148716}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &635684389
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +690,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3420265485281566190, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3730139102686556749, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.05
@@ -1130,6 +1161,11 @@ RectTransform:
   m_AnchoredPosition: {x: 151.78, y: 88.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!54 &1381942511 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1124458518171770592, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
+  m_PrefabInstance: {fileID: 807405349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1384396937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1189,6 +1225,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5880475866133162362, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 469148722}
+    - targetCorrespondingSourceObject: {fileID: 5880475866133162362, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 469148723}
   m_SourcePrefab: {fileID: 100100000, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
 --- !u!1001 &1407165240
 PrefabInstance:
@@ -1396,7 +1435,7 @@ GameObject:
   - component: {fileID: 1498550851}
   m_Layer: 0
   m_Name: VacPac
-  m_TagString: Untagged
+  m_TagString: VacPac
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

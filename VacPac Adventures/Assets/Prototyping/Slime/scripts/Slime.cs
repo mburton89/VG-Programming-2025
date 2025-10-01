@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Slime : MonoBehaviour
-{
-    public float attractionSpeed;
-    public GameObject targetObject;
+{  
     public float slimeSize;
     public float slimeSpeed;
     public float fuelPower;
@@ -111,15 +109,6 @@ public class Slime : MonoBehaviour
     {
         // Slime struggles against absorption. can escape?
         //Need Vacpac Script
-    }
-
-    public void GetAbsorbed()
-    {
-        if (targetObject != null)
-        {
-            Vector3 targetPosition = targetObject.transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, targetObject.transform.position, attractionSpeed * Time.deltaTime);
-        }
     }
 
 }
