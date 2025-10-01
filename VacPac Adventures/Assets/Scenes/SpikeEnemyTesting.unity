@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 188276520}
   - component: {fileID: 188276519}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: EnemyKiller
   m_TagString: EnemyKiller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
