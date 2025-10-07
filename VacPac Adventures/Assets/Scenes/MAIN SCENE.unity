@@ -385,6 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92aece518b664444d9989a26f474cee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fuelAddAmount: 5
 --- !u!1 &635684389
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,9 +951,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarFill: {fileID: 1367613387}
   jetFuelBarFill: {fileID: 73217153}
+  playerHeightScore: 0
   playerHeightScoreTMP: {fileID: 1474064115}
   playerBestScoreTMP: {fileID: 2064517164}
+  timerTMP: {fileID: 0}
   resetScoreKey: 269
+  timeLeft: 60
+  timerIsCounting: 0
+  debugGameOverKey: 0
+  debugTimerAdd: 0
 --- !u!114 &1303582696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,8 +1280,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Max Height: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f4b334559a4352f4c9a8ef4dec2146d8, type: 2}
+  m_sharedMaterial: {fileID: 6614749707535729076, guid: f4b334559a4352f4c9a8ef4dec2146d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1947,8 +1954,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Best Height: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f4b334559a4352f4c9a8ef4dec2146d8, type: 2}
+  m_sharedMaterial: {fileID: 6614749707535729076, guid: f4b334559a4352f4c9a8ef4dec2146d8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

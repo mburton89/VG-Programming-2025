@@ -9,8 +9,6 @@ public class SpikeEnemy : MonoBehaviour
 
     public Animator animator;
 
-    public List<GameObject> spikes;
-
     public GameObject slimeDropPrefab;
 
     public float attackRange;
@@ -29,43 +27,21 @@ public class SpikeEnemy : MonoBehaviour
         if (distanceToTarget <= attackRange && Time.time >= attackCooldown + lastAttackTime)
         {
             lastAttackTime = Time.time;
-            Attack();
-        }
-
-        //For testing out Spike Enemy death - remove after merge
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            TakeDamage();
+            StartCoroutine(AttackWithSpikes());
         }
     }
 
-    public void Attack()
-    {
-        Debug.Log("Attack");
-
-
-        StartCoroutine(GrowSpikes());
-        //Player.TakeDamage(spikeEnemyDamage);
-    }
-
-    IEnumerator GrowSpikes()
+    IEnumerator AttackWithSpikes()
     {
         animator.SetBool("isAttacking", true);
-        //foreach (var spike in spikes)
-        //{
-        //    spike.transform.localScale = new Vector3(6f, spike.transform.localScale.y, spike.transform.localScale.z);
-        //}
 
         yield return new WaitForSeconds(0.5f);
 
+        PlayerTemp.Instance.currenthealth -= 2;
+
         animator.SetBool("isAttacking", false);
 
-        //foreach (var spike in spikes)
-        //{
-        //    spike.transform.localScale = new Vector3(0.2f, spike.transform.localScale.y, spike.transform.localScale.z);
-        //}
-
-        StopCoroutine(GrowSpikes());
+        StopCoroutine(AttackWithSpikes());
     }
 
     public void TakeDamage()
@@ -79,6 +55,14 @@ public class SpikeEnemy : MonoBehaviour
                 Instantiate(slimeDropPrefab, transform.position, transform.rotation);
             }
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("SlimeBullet"))
+        {
+            TakeDamage();
         }
     }
 

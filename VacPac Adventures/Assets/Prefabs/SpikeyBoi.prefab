@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6918771316823438249}
   - component: {fileID: 5202685438575489763}
   - component: {fileID: 2876196026963186467}
+  - component: {fileID: 3317410040403983922}
   - component: {fileID: 7987080724888591369}
   - component: {fileID: 7074365307136440430}
   m_Layer: 0
@@ -108,6 +109,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &3317410040403983922
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547481825158312768}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3.6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7987080724888591369
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,7 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   animator: {fileID: 1108806930276600658}
-  spikes: []
   slimeDropPrefab: {fileID: 7586147159261913360, guid: 869811cee97156749a878576dd4258c2, type: 3}
   attackRange: 3
   spikeEnemyHealth: 9

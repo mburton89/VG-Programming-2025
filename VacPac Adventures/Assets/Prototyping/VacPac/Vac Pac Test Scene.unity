@@ -128,7 +128,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5880475866133162362, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
   m_PrefabInstance: {fileID: 6732014314941398888}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &77922924
+--- !u!114 &77922929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,9 +137,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 77922919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92aece518b664444d9989a26f474cee5, type: 3}
+  m_Script: {fileID: 11500000, guid: d8e1a389fc297c94989705493b96b6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attractionSpeed: 25
+  targetObject: {fileID: 1680183481}
+  slimeSize: 5
+  slimeSpeed: 5
+  fuelPower: 5
+  rigidBody: {fileID: 0}
 --- !u!1 &414171924
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,13 +431,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680183481}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1680183486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,11 +450,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3694ae1afcbb004697f513b3720eed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  absorbSpeed: 1
+  absorbSpeed: 5
   SlimeBullet: {fileID: 3302574509855077336, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
   cooldown: 0
   shootRate: 20
   coolRate: 100
+  spawnPoint: {fileID: 0}
 --- !u!1001 &1488880115984033846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -564,7 +571,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5880475866133162362, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 77922924}
+      addedObject: {fileID: 77922929}
   m_SourcePrefab: {fileID: 100100000, guid: ce009eb2f65bb9f499fc7432d200cb4f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

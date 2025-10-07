@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Slime : MonoBehaviour
-{
-
+{  
     public float slimeSize;
     public float slimeSpeed;
     public float fuelPower;
+    private bool obtained = false;
+    public float attractionSpeed;
+    public GameObject targetObject;
+    public float fuelAddAmount = 5f;
 
     public Rigidbody rigidBody;
 
@@ -112,10 +115,38 @@ public class Slime : MonoBehaviour
         //Need Vacpac Script
     }
 
-    public void GetAbsorbed()
+    public void GetPulled()
     {
-        // Telegraph fuelPower before destroyObject
-        // Need VacPac
+        if (targetObject != null)
+        {
+            Vector3 targetPosition = targetObject.transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, targetObject.transform.position, attractionSpeed * Time.deltaTime);
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "VacPac")
+        {
+            if (VacPackAlpha.Instance.imEating)
+            {
+                Obtain();
+                obtained = true;
+            }
+        }
+    }
+
+    private void Obtain()
+    {
+        PlayerTemp.Instance.currentFuel += fuelAddAmount;
+
+        if (PlayerTemp.Instance.currentFuel > PlayerTemp.Instance.maxFuel)
+        {
+            PlayerTemp.Instance.currentFuel = PlayerTemp.Instance.maxFuel;
+        }
+        Destroy(this.gameObject);
+
+        Destroy(gameObject);
     }
 
 }
