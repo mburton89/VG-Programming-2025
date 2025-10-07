@@ -7,6 +7,10 @@ public class Slime : MonoBehaviour
     public float slimeSize;
     public float slimeSpeed;
     public float fuelPower;
+    private bool obtained = false;
+    public float attractionSpeed;
+    public GameObject targetObject;
+    public float fuelAddAmount = 5f;
 
     public Rigidbody rigidBody;
 
@@ -109,6 +113,40 @@ public class Slime : MonoBehaviour
     {
         // Slime struggles against absorption. can escape?
         //Need Vacpac Script
+    }
+
+    public void GetPulled()
+    {
+        if (targetObject != null)
+        {
+            Vector3 targetPosition = targetObject.transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, targetObject.transform.position, attractionSpeed * Time.deltaTime);
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "VacPac")
+        {
+            if (VacPackAlpha.Instance.imEating)
+            {
+                Obtain();
+                obtained = true;
+            }
+        }
+    }
+
+    private void Obtain()
+    {
+        PlayerTemp.Instance.currentFuel += fuelAddAmount;
+
+        if (PlayerTemp.Instance.currentFuel > PlayerTemp.Instance.maxFuel)
+        {
+            PlayerTemp.Instance.currentFuel = PlayerTemp.Instance.maxFuel;
+        }
+        Destroy(this.gameObject);
+
+        Destroy(gameObject);
     }
 
 }
