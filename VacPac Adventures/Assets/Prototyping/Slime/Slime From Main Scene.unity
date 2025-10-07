@@ -548,13 +548,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 635684389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fdf1b135660e34ea59b0fe4df9438f, type: 3}
+  m_Script: {fileID: 11500000, guid: 80d0ed429a4780b4d9553832de1a28e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currenthealth: 10
   maxHealth: 10
-  currentFuel: 20
-  maxFuel: 20
+  currentFuel: 0
+  maxFuel: 30
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3730139102686556749, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.79
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 3730139102686556749, guid: 0ab2a9ade27c9584f82a7d1df27c54db, type: 3}
       propertyPath: m_LocalPosition.z
@@ -928,7 +928,6 @@ GameObject:
   - component: {fileID: 1303582698}
   - component: {fileID: 1303582697}
   - component: {fileID: 1303582696}
-  - component: {fileID: 1303582695}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -936,23 +935,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1303582695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303582694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d9a7c40136d5d94680b1d2b8129e897, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarFill: {fileID: 1367613387}
-  jetFuelBarFill: {fileID: 73217153}
-  playerHeightScoreTMP: {fileID: 1474064115}
-  playerBestScoreTMP: {fileID: 2064517164}
-  resetScoreKey: 269
 --- !u!114 &1303582696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,7 +1361,6 @@ GameObject:
   - component: {fileID: 1498550854}
   - component: {fileID: 1498550853}
   - component: {fileID: 1498550852}
-  - component: {fileID: 1498550851}
   m_Layer: 0
   m_Name: VacPac
   m_TagString: Untagged
@@ -1402,24 +1383,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1723211163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1498550851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498550849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3694ae1afcbb004697f513b3720eed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  absorbSpeed: 1
-  SlimeBullet: {fileID: 3302574509855077336, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
-  cooldown: 0
-  shootRate: 20
-  coolRate: 100
-  spawnPoint: {fileID: 1498550850}
 --- !u!65 &1498550852
 BoxCollider:
   m_ObjectHideFlags: 0

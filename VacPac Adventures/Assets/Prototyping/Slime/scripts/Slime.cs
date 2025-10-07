@@ -10,9 +10,11 @@ public class Slime : MonoBehaviour
     public float slimeSpeed;
     public float fuelPower;
 
+    float transmitFuel;
+
     public Rigidbody rigidBody;
 
-    public Transform activeEnemy;
+    private Transform activeEnemy;
 
     bool isRelaxed;
 
@@ -76,7 +78,6 @@ public class Slime : MonoBehaviour
             if (isRelaxed)
             {
                 isRelaxed = false;
-                //tag offending Enemy with variable to be used in FleeFromEnemy to move away
 
                 if (idleWanderCoroutine != null)
                 {
@@ -95,17 +96,16 @@ public class Slime : MonoBehaviour
         do
         {
 
+            //hop away from enemy
 
             float randY = Random.Range(8.0f, 10.0f);
             float fleeDirectionX = transform.position.x - activeEnemy.position.x;
             float fleeDirectionZ = transform.position.z - activeEnemy.position.z;
 
-            //hop away from enemy
-            //Vector3 directionToFlee = new Vector3(activeEnemy.position.x + transform.position.x, randY, activeEnemy.position.z + transform.position.z);
 
             Vector3 directionToFlee = new Vector3(fleeDirectionX, randY, fleeDirectionZ);
 
-            rigidBody.AddForce(directionToFlee * slimeSpeed * 2, ForceMode.Impulse);
+            rigidBody.AddForce(directionToFlee / 2 * slimeSpeed * 2, ForceMode.Impulse);
 
             // time between hops
             yield return new WaitForSeconds(1.5f);
@@ -137,11 +137,21 @@ public class Slime : MonoBehaviour
         // Slime struggles against absorption. can escape?
         //Need Vacpac Script
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+    transmitFuel = fuelPower;
+        if (collision.gameObject.GetComponent<SL_VacPacAlpha>()) 
+        {
+            collision.gameObject.GetComponent<SL_PlayerTemp>().RefuelJetFuel(transmitFuel);
+            SL_PlayerTemp.Instance.refuelling = true;
+            GetAbsorbed();
+        }
+    }
 
     public void GetAbsorbed()
     {
-        // Telegraph fuelPower before destroyObject
-        // Need VacPac
+        print("Slime Absorbed with " + fuelPower + " fuel.");
+        Destroy(this.gameObject);
     }
 
 }
