@@ -279,9 +279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e1a389fc297c94989705493b96b6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimeSize: 0
   slimeSpeed: 0.3
-  fuelPower: 0
+  fuelPower: 10
   rigidBody: {fileID: 1124458518171770592}
 --- !u!54 &1124458518171770592
 Rigidbody:

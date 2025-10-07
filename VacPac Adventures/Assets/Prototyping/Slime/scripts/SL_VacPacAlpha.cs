@@ -21,6 +21,10 @@ public class SL_VacPacAlpha : MonoBehaviour
 
     public Transform spawnPoint;
 
+    // ADDED BY KIAN vvvv
+    public Rigidbody vacPacBody;
+    //ADDED BY KIAN ^^^^
+
     void Awake()
     {
         Instance = this;

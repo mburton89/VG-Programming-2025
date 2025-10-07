@@ -25,7 +25,8 @@ public class SL_PlayerTemp : MonoBehaviour
     void Update()
     {
         if (refuelling == true)
-        { 
+        {
+            print("Running Refuel");
             RefuelJetFuel(0);
         }
     }
