@@ -50,6 +50,7 @@ public class Slime : MonoBehaviour
             //transform.Translate(newDirection * slimeSpeed * Time.deltaTime);
             rigidBody.AddForce(newDirection * slimeSpeed, ForceMode.Impulse);
             Debug.Log("AddForce");
+            AudioManager.Instance.PlaySound("SlimeJump", false, transform.position);
 
             //Wait 10 seconds
             //yield on a new YieldInstruction that waits for 5 seconds

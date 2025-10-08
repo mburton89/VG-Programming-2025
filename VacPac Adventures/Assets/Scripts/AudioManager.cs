@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
     public List<AudioClip> sfxClips;
 
+
+
     private void Awake()
     {
         Instance = this;
@@ -52,6 +54,29 @@ public class AudioManager : MonoBehaviour
         if (clip != null)
         {
             sfxSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning($"SFX clip '{clipName}' not found.");
+        }
+    }
+
+    public void PlaySound(string clipName, bool isLoop, Vector3 soundPosition)
+    {
+        AudioClip clip = sfxClips.Find(c => c.name == clipName);
+
+        if (isLoop)
+        {
+            sfxSource.loop = true;
+        }
+        else
+        {
+            sfxSource.loop = false;
+        }
+
+        if (clip != null)
+        {
+            AudioSource.PlayClipAtPoint(clip, soundPosition);
         }
         else
         {
