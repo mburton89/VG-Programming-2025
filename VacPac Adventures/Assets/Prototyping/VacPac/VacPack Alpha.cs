@@ -17,6 +17,8 @@ public class VacPackAlpha : MonoBehaviour
 
     public bool imEating = false;
 
+    public float fuelUseAmount = 2f;
+
     public static VacPackAlpha Instance;
 
     private RaycastHit _hit;
@@ -74,9 +76,19 @@ public class VacPackAlpha : MonoBehaviour
     
     void Shoot()
     {
+        PlayerTemp.Instance.currentFuel -= fuelUseAmount;
+
+        if (PlayerTemp.Instance.currentFuel < 0)
+        {
+            PlayerTemp.Instance.currentFuel = 0;
+        }
+
+        if (PlayerTemp.Instance.currentFuel > 0)
+        {
             cooldown = shootRate;
             Instantiate(SlimeBullet, spawnPoint.position, transform.rotation, null);
             Debug.Log("pew");
+        }
     }
 
 }
