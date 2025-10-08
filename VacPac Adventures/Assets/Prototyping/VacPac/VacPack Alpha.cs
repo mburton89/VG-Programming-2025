@@ -83,9 +83,12 @@ public class VacPackAlpha : MonoBehaviour
             PlayerTemp.Instance.currentFuel = 0;
         }
 
-        cooldown = shootRate;
-        Instantiate(SlimeBullet, spawnPoint.position, transform.rotation, null);
-        Debug.Log("pew");
+        if (PlayerTemp.Instance.currentFuel > 0)
+        {
+            cooldown = shootRate;
+            Instantiate(SlimeBullet, spawnPoint.position, transform.rotation, null);
+            Debug.Log("pew");
+        }
     }
 
 }
