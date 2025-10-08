@@ -5,8 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
+    public static GameOver Instance;
+
+
     [Header("References")]
     public GameObject gameOverCanvas;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -16,7 +26,7 @@ public class GameOver : MonoBehaviour
         }
     }
 
-    private void ShowGameOver()
+    public void ShowGameOver()
     {
         if (gameOverCanvas != null)
         {
