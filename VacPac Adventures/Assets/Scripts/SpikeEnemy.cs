@@ -35,6 +35,8 @@ public class SpikeEnemy : MonoBehaviour
     {
         animator.SetBool("isAttacking", true);
 
+        AudioManager.Instance.PlaySound("Spike", false);
+
         yield return new WaitForSeconds(0.5f);
 
         PlayerTemp.Instance.currenthealth -= 2;
@@ -54,6 +56,7 @@ public class SpikeEnemy : MonoBehaviour
             {
                 Instantiate(slimeDropPrefab, transform.position, transform.rotation);
             }
+            AudioManager.Instance.PlaySound("SlimeDeath", false);
             Destroy(gameObject);
         }
     }

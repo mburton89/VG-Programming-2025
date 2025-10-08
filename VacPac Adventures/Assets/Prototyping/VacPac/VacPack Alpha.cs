@@ -42,10 +42,23 @@ public class VacPackAlpha : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1))
         {
             Absorb();
+            if (PlayerTemp.Instance.currentFuel > 0)
+            {
+                AudioManager.Instance.PlaySound("SlimeStream", true);
+            }
+            else
+            {
+                AudioManager.Instance.StopSound();
+            }
             imEating = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            AudioManager.Instance.StopSound();
         }
         else
         {
+
             imEating = false;
         }
 
@@ -53,8 +66,20 @@ public class VacPackAlpha : MonoBehaviour
         {
             if (cooldown <= 0)
             {
+                if (PlayerTemp.Instance.currentFuel > 0)
+                {
+                    AudioManager.Instance.PlaySound("SlimeStream", true);
+                }
+                else
+                {
+                    AudioManager.Instance.StopSound();
+                }
                 Shoot();
             }
+        }
+        else if (Input.GetKeyUp (KeyCode.Mouse0))
+        {
+            AudioManager.Instance.StopSound();
         }
     }
 
