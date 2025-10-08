@@ -683,6 +683,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &731455900
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1723211163}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.63495564
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.067312494
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.76114035
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.11386735
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+      propertyPath: m_Name
+      value: VacPac_modle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: -8700617353114198275, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+    - {fileID: 65702495048144492, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
 --- !u!1001 &807405349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1348,11 +1423,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime Bullet
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7418419059483305649, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
+      propertyPath: m_AngularDrag
+      value: 6.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418419059483305649, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -2986299538570691509, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3302574509855077336, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1435559432}
   m_SourcePrefab: {fileID: 100100000, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
+--- !u!1 &1435559425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3302574509855077336, guid: 01aedbcba96a11443855d48157ca2b4b, type: 3}
+  m_PrefabInstance: {fileID: 1407165240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1435559432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435559425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1307775758194a04ba88551a8cd2a042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 30
+  lifetime: 0
 --- !u!1 &1474064114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1646,7 @@ MonoBehaviour:
   shootRate: 20
   coolRate: 100
   imEating: 0
+  fuelUseAmount: 2
   spawnPoint: {fileID: 1498550850}
 --- !u!65 &1498550852
 BoxCollider:
@@ -1687,6 +1794,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514150529}
   m_CullTransparentMesh: 1
+--- !u!4 &1624159094 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a05a3fc7d7ac6f14991ad1b924d94c2c, type: 3}
+  m_PrefabInstance: {fileID: 731455900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1694943899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1899,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1498550850}
+  - {fileID: 1624159094}
   m_Father: {fileID: 635684395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &1723211164
