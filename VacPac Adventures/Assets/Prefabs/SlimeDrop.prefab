@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9167972519386819292}
   - component: {fileID: 3444170505937619285}
   - component: {fileID: 7396044648874708910}
+  - component: {fileID: 4901325642195224593}
   m_Layer: 0
   m_Name: SlimeDrop
   m_TagString: Untagged
@@ -133,3 +134,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4901325642195224593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586147159261913360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e1a389fc297c94989705493b96b6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeSize: 0.2
+  slimeSpeed: 0.2
+  fuelPower: 2
+  attractionSpeed: 30
+  targetObject: {fileID: 0}
+  fuelAddAmount: 5
+  rigidBody: {fileID: 7396044648874708910}
