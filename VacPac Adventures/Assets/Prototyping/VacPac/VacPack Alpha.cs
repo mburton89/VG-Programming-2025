@@ -15,6 +15,10 @@ public class VacPackAlpha : MonoBehaviour
 
     public float coolRate = 1;
 
+    public bool imEating = false;
+
+    public float fuelUseAmount = 2f;
+
     public static VacPackAlpha Instance;
 
     private RaycastHit _hit;
@@ -26,13 +30,6 @@ public class VacPackAlpha : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
-    public void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (cooldown > 0)
@@ -42,43 +39,93 @@ public class VacPackAlpha : MonoBehaviour
             }
         }
 
-            if (Input.GetKey(KeyCode.Mouse1))
-            {  
-
-                Absorb();
-            }
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                if (cooldown <= 0)
-                {
-                    Shoot();
-                }
-            }
-      }
-
-
-        void Absorb()
+        if (Input.GetKey(KeyCode.Mouse1))
         {
-           if (Physics.Raycast(transform.position, transform.forward, out _hit))
+            Absorb();
+            imEating = true;
+        }
+        else
         {
-            Debug.Log("Target Name: " + _hit.transform.name);
-                if (_hit.transform.GetComponent<SlimeVAC>() != null)
-            {
-                Debug.Log("Target Present");
-                _hit.transform.GetComponent<SlimeVAC>().getAbsorbed();
-            }
-        } 
-            Debug.Log("click");
+            imEating = false;
         }
 
-        void Shoot()
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            if (cooldown <= 0)
+            {
+                Shoot();
+            }
+        }
+    }
+
+
+    void Absorb()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out _hit))
+        {
+            Debug.Log("Target Name: " + _hit.transform.name);
+
+            if (_hit.transform.GetComponent<Slime>() != null)
+            {
+                Debug.Log("Target Present");
+                _hit.transform.GetComponent<Slime>().GetPulled();
+            }
+        }
+        Debug.Log("click");
+    }
+    
+    void Shoot()
+    {
+        PlayerTemp.Instance.currentFuel -= fuelUseAmount;
+
+        if (PlayerTemp.Instance.currentFuel < 0)
+        {
+            PlayerTemp.Instance.currentFuel = 0;
+        }
+
+        if (PlayerTemp.Instance.currentFuel > 0)
         {
             cooldown = shootRate;
             Instantiate(SlimeBullet, spawnPoint.position, transform.rotation, null);
             Debug.Log("pew");
-
-
         }
-    
+    }
+
 }
+//Insert following lines into Slime
+
+//under public class
+
+//private bool obtained = false;
+//public float attractionSpeed;
+//public GameObject targetObject;
+
+
+//public void GetPulled()
+//{
+//    if (targetObject != null)
+//    {
+//        Vector3 targetPosition = targetObject.transform.position;
+//        transform.position = Vector3.MoveTowards(transform.position, targetObject.transform.position, attractionSpeed * Time.deltaTime);
+//    }
+//}
+
+//public void OnCollisionEnter(Collision collision)
+//{
+//    if (collision.gameObject.tag == "VacPac")
+//    {
+//        if (VacPackAlpha.Instance.imEating)
+//        {
+//            Obtain();
+//            obtained = true;
+//        }
+//    }
+//}
+
+//private void Obtain()
+//{
+//    Destroy(gameObject);
+//}
+
+
+

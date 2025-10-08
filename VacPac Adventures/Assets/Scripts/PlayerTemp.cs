@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerTemp : MonoBehaviour
 {
+    public static PlayerTemp Instance;
 
     //temp
     public float currenthealth;
     public float maxHealth;
     public float currentFuel;
     public float maxFuel;
-
-    public static PlayerTemp Instance;
 
     // Start is called before the first frame update
     void Start()
