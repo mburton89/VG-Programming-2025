@@ -27,12 +27,6 @@ public class Slime : MonoBehaviour
         StartCoroutine(IdleWander());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator IdleWander()
     {
         Debug.Log("IdleWander" + isRelaxed);
@@ -128,7 +122,7 @@ public class Slime : MonoBehaviour
     {
         if (collision.gameObject.tag == "VacPac")
         {
-            if (VacPackAlpha.Instance.imEating)
+            if (VacPackAlpha.Instance.imEating && PlayerTemp.Instance.currentFuel < PlayerTemp.Instance.maxFuel)
             {
                 Obtain();
                 obtained = true;
