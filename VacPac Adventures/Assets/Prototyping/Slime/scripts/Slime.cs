@@ -25,12 +25,11 @@ public class Slime : MonoBehaviour
         //Start coroutine IdleWander
         isRelaxed = true; 
         StartCoroutine(IdleWander());
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (targetObject == null)
+        {
+            targetObject = FindObjectOfType<VacPackAlpha>().gameObject;
+        }
     }
 
     IEnumerator IdleWander()
@@ -50,6 +49,7 @@ public class Slime : MonoBehaviour
             //transform.Translate(newDirection * slimeSpeed * Time.deltaTime);
             rigidBody.AddForce(newDirection * slimeSpeed, ForceMode.Impulse);
             Debug.Log("AddForce");
+            AudioManager.Instance.PlaySound("SlimeJump", false, transform.position);
 
             //Wait 10 seconds
             //yield on a new YieldInstruction that waits for 5 seconds
@@ -128,7 +128,7 @@ public class Slime : MonoBehaviour
     {
         if (collision.gameObject.tag == "VacPac")
         {
-            if (VacPackAlpha.Instance.imEating)
+            if (VacPackAlpha.Instance.imEating && PlayerTemp.Instance.currentFuel < PlayerTemp.Instance.maxFuel)
             {
                 Obtain();
                 obtained = true;

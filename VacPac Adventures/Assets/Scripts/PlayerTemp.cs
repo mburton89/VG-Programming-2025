@@ -12,6 +12,19 @@ public class PlayerTemp : MonoBehaviour
     public float currentFuel;
     public float maxFuel;
 
+    public GameObject vacPacObject;
+
+    public GameObject gameOverScreen;
+
+    private void initiateGameOver()
+    {
+        gameObject.GetComponent<FPSController>().enabled = false;
+        vacPacObject.GetComponent<VacPackAlpha>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gameOverScreen.SetActive(true);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +35,9 @@ public class PlayerTemp : MonoBehaviour
     void Update()
     {
         
+        if (gameOverScreen != null && currenthealth <= 0)
+        {
+            initiateGameOver();
+        }
     }
 }
