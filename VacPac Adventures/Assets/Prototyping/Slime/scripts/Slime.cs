@@ -25,6 +25,11 @@ public class Slime : MonoBehaviour
         //Start coroutine IdleWander
         isRelaxed = true; 
         StartCoroutine(IdleWander());
+
+        if (targetObject == null)
+        {
+            targetObject = FindObjectOfType<VacPackAlpha>().gameObject;
+        }
     }
 
     IEnumerator IdleWander()
