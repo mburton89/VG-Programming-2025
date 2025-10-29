@@ -109,11 +109,11 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (collision.collider.CompareTag("EnemyKiller"))
-            {
+        {
 
             if (explosionEffect != null)
             {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+                Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
             }
 
